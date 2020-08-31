@@ -13,6 +13,8 @@
 		920C06C724FC7FE200372EFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 920C06C624FC7FE200372EFF /* Assets.xcassets */; };
 		920C06CA24FC7FE200372EFF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 920C06C924FC7FE200372EFF /* Preview Assets.xcassets */; };
 		920C06CD24FC7FE200372EFF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 920C06CB24FC7FE200372EFF /* LaunchScreen.storyboard */; };
+		920C06D524FC885B00372EFF /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920C06D424FC885B00372EFF /* CameraController.swift */; };
+		920C06D724FC8C2200372EFF /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920C06D624FC8C2200372EFF /* CameraViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		920C06C924FC7FE200372EFF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		920C06CC24FC7FE200372EFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		920C06CE24FC7FE200372EFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		920C06D424FC885B00372EFF /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
+		920C06D624FC8C2200372EFF /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				920C06CB24FC7FE200372EFF /* LaunchScreen.storyboard */,
 				920C06CE24FC7FE200372EFF /* Info.plist */,
 				920C06C824FC7FE200372EFF /* Preview Content */,
+				920C06D424FC885B00372EFF /* CameraController.swift */,
+				920C06D624FC8C2200372EFF /* CameraViewController.swift */,
 			);
 			path = Tracking_User_Face;
 			sourceTree = "<group>";
@@ -147,7 +153,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				920C06C124FC7FE100372EFF /* AppDelegate.swift in Sources */,
+				920C06D724FC8C2200372EFF /* CameraViewController.swift in Sources */,
 				920C06C324FC7FE100372EFF /* SceneDelegate.swift in Sources */,
+				920C06D524FC885B00372EFF /* CameraController.swift in Sources */,
 				920C06C524FC7FE100372EFF /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

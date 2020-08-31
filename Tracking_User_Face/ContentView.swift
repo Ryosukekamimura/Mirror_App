@@ -9,9 +9,26 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    
     var body: some View {
-        Text("Hello, World!")
+        ZStack{
+            CameraViewController()
+                .edgesIgnoringSafeArea(.top)
+            Spacer()
+            
+            Button(action: {
+                
+            }, label: {
+                Text("Stop")
+                    .background(Color(.white))
+                    .foregroundColor(Color(.black))
+                    .cornerRadius(20)
+            })
+            
+        }
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
