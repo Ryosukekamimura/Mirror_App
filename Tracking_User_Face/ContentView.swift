@@ -10,6 +10,8 @@ import SwiftUI
 
 struct ContentView: View {
     
+    let cameraController = CameraController()
+    
     
     var body: some View {
         ZStack{
@@ -18,7 +20,7 @@ struct ContentView: View {
             Spacer()
             
             Button(action: {
-                
+                // self.cameraController.stopVideoRunning
             }, label: {
                 Text("Stop")
                     .background(Color(.white))

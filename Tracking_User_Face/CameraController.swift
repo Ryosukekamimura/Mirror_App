@@ -18,7 +18,7 @@ class CameraController: NSObject{
     var previewLayer: AVCaptureVideoPreviewLayer?
     
     
-    
+    // enumでエラー拾えるようにしておく
     enum CameraControllerError: Swift.Error{
         case captureSessionAlreadyRunning
         case captureSessionIsMissing
@@ -33,36 +33,48 @@ class CameraController: NSObject{
     
     func prepare(completionHandler: @escaping (Error?) -> Void){
         
-        
+        // To manage capture activity and coordinates he flow of data from input and output devices.
         func createCaptureSession(){
             self.captureSession = AVCaptureSession()
         }
         
         
         func configureCaptureDevices() throws {
+            // AVCapture Device Setting
             let camera = AVCaptureDevice.default(.builtInWideAngleCamera, for: AVMediaType.video, position: .front)
             self.frontCamera = camera
+            
+            // exclusive access
             try camera?.lockForConfiguration()
+            
+            // relinquishes exclusive access
             camera?.unlockForConfiguration()
         }
         
         
+        
+        
         func configureDeviceInputs() throws {
+            
+            // catch captureSessionIsMissing
             guard let captureSession = self.captureSession else { throw CameraControllerError.captureSessionIsMissing }
-               
+
             if let frontCamera = self.frontCamera {
-                self.frontCameraInput = try AVCaptureDeviceInput(device: frontCamera)
-                   
+                self.frontCameraInput = try AVCaptureDeviceInput.init(device: frontCamera)
+
+                //whether a given input can be added to the session. then add a given input
                 if captureSession.canAddInput(self.frontCameraInput!) { captureSession.addInput(self.frontCameraInput!)}
                 else { throw CameraControllerError.inputsAreInvalid }
-                   
+
             }
+            // frontCameraに代入できないからfrontCameraは使えない可能性が高いというエラーをはく
             else { throw CameraControllerError.noCamerasAvailable }
-               
+
+            // capture running!
             captureSession.startRunning()
-               
         }
            
+        
         DispatchQueue(label: "prepare").async {
             do {
                 createCaptureSession()
@@ -84,12 +96,18 @@ class CameraController: NSObject{
     
     func displayPreview(on view: UIView) throws {
         guard let captureSession = self.captureSession, captureSession.isRunning else { throw CameraControllerError.captureSessionIsMissing }
-            
+
         self.previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
             self.previewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         self.previewLayer?.connection?.videoOrientation = .portrait
         
         view.layer.insertSublayer(self.previewLayer!, at: 0)
         self.previewLayer?.frame = view.frame
+    }
+    
+    func stopVideoRunning() throws {
+        guard let captureSession = self.captureSession else { throw CameraControllerError.captureSessionIsMissing }
+        
+        captureSession.stopRunning()
     }
 }
